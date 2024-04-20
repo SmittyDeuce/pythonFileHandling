@@ -20,7 +20,7 @@ import os
 # Expected Outcome:
 # The script should correctly list all files and subdirectories in the specified directory. Handle exceptions for invalid paths or inaccessible directories.
 
-print(os.path.exists("testing"))
+# print(os.path.exists("testing"))
 
 
 def directoryInspector():
@@ -38,7 +38,7 @@ def directoryInspector():
         print("Path does not exist")
 
 
-directoryInspector()
+# directoryInspector()
 
 
 # Task 2: File Size Reporter:
@@ -53,6 +53,32 @@ directoryInspector()
 # ```
 # Expected Outcome:
 # Your program should display the name and size (in bytes) of each file in the given directory. Ensure that the program only reports on files, not directories, and handles any errors gracefully.
+
+def FileSizeReporter():
+    searchPath = input("Enter the path your're looking for: ").strip()
+    if os.path.exists(searchPath):
+        print("File Exists...")
+        try:
+            if len(os.listdir(searchPath)) == 0:
+                print("Directory is Empty")
+            else:
+                files = os.listdir(searchPath)
+                for file in files:
+                    filePath = os.path.join(searchPath, file)
+                    if os.path.isfile(filePath):
+                        size = os.path.getsize(filePath)
+                        print(f"file {file} has a size of {size} bytes")
+                   
+        except NotADirectoryError:
+            print("Directory Not Found.")
+    else:
+        print("Path does not exist")
+
+FileSizeReporter()
+
+
+
+
 # Task 3: File Extension Counter:
 
 # Problem Statement:
