@@ -59,13 +59,22 @@ def FileSizeReporter():
     if os.path.exists(searchPath):
         print("File Exists...")
         try:
+            #checks if directory is empty
             if len(os.listdir(searchPath)) == 0:
                 print("Directory is Empty")
             else:
+                # if not get list of files in directory
                 files = os.listdir(searchPath)
+
                 for file in files:
+                    '''creating full file path
+                        os.path.join(directory, file) is used because
+                        getsize() needs full path as args
+                    '''
                     filePath = os.path.join(searchPath, file)
+                    # checks if file is a regular file
                     if os.path.isfile(filePath):
+                        # get size of file
                         size = os.path.getsize(filePath)
                         print(f"file {file} has a size of {size} bytes")
                    
