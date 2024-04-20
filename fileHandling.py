@@ -19,6 +19,28 @@ import os
 # ```
 # Expected Outcome:
 # The script should correctly list all files and subdirectories in the specified directory. Handle exceptions for invalid paths or inaccessible directories.
+
+print(os.path.exists("testing"))
+
+
+def directoryInspector():
+    searchPath = input("Enter the path your're looking for: ").strip()
+    if os.path.exists(searchPath):
+        print("File Exists...")
+        try:
+            if len(os.listdir(searchPath)) == 0:
+                print("Directory is Empty")
+            else:
+                print(os.listdir(searchPath))
+        except NotADirectoryError:
+            print("Directory Not Found.")
+    else:
+        print("Path does not exist")
+
+
+directoryInspector()
+
+
 # Task 2: File Size Reporter:
 
 # Problem Statement:
