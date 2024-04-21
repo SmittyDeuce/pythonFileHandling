@@ -133,7 +133,7 @@ def FileExtensionCounter():
         print("Path does not exist")
 
     
-FileExtensionCounter()
+# FileExtensionCounter()
 
 
 
@@ -162,6 +162,20 @@ FileExtensionCounter()
 # ```
 # Expected Outcome:
 # The script should output a list of all unique email addresses found in the file. Utilize regex to accurately identify email addresses amidst other text.
+
+with open('contacts.txt', "w+") as file:
+    file.write("John Doe - john.doe@example.com")
+    file.write("\nJane Smith - jane.smith@gmail.com")
+
+def EmailExtractor():
+    with open('contacts.txt') as file:
+        for line in file:
+            emailPattern = r'[a-z.]+@[a-z]+\.[a-z]{2,}'
+            match = re.findall(emailPattern, line)
+            for email in match:
+                print(email)
+
+EmailExtractor()
 
 # 3. Advanced Python Data Processing and Analysis Challenge
 # Objective:
