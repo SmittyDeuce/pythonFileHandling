@@ -20,7 +20,11 @@ import os
 # Expected Outcome:
 # The script should correctly list all files and subdirectories in the specified directory. Handle exceptions for invalid paths or inaccessible directories.
 
-# print(os.path.exists("testing"))
+
+'''creating full file path
+os.path.join(directory, file) is used because
+getsize() needs full path as args
+'''
 
 
 def directoryInspector():
@@ -73,6 +77,7 @@ def FileSizeReporter():
                     '''
                     filePath = os.path.join(searchPath, file)
                     # checks if file is a regular file
+                    # print(type(filePath))
                     if os.path.isfile(filePath):
                         # get size of file
                         size = os.path.getsize(filePath)
@@ -83,9 +88,7 @@ def FileSizeReporter():
     else:
         print("Path does not exist")
 
-FileSizeReporter()
-
-
+# FileSizeReporter()
 
 
 # Task 3: File Extension Counter:
@@ -97,6 +100,43 @@ FileSizeReporter()
 # python def count_file_extensions(directory): # Count and print the number of files of each extension type in the directory
 # Expected Outcome:
 # The script should accurately count and display the number of files for each extension type in the specified directory. Handle different cases of file extensions (e.g., '.TXT' and '.txt' should be considered the same).
+
+def FileExtensionCounter():
+    fileExtension = {}
+    searchPath = input("Enter the path your're looking for: ").strip()
+    if os.path.exists(searchPath):
+        print("File Exists...")
+        try:
+            if len(os.listdir(searchPath)) == 0:
+                print("Directory is Empty")
+            else:
+                files = os.listdir(searchPath)
+                for file in files:
+                    _, extension = os.path.splitext(file)
+                    extension = extension.lower()
+                    filePath = os.path.join(searchPath, file)
+                    # print(extension)
+                    if extension in fileExtension:
+                        fileExtension[extension] += 1
+                    else:
+                        fileExtension[extension] = 1
+
+                    # if os.path.isfile((filePath)) and re.search(isPython, filePath):
+                    #     print(filePath)
+                    #     fileExtension['.py'] += 1
+                    # if os.path.isfile((filePath))  and not re.search(isPython, filePath):
+                    #     fileExtension['.txt'] += 1
+            print(fileExtension)
+        except NotADirectoryError:
+            print("Directory Not Found.")
+    else:
+        print("Path does not exist")
+
+    
+FileExtensionCounter()
+
+
+
 # 2. Regex-Powered Text Data Processing
 # Objective:
 # The purpose of this assignment is to harness the power of regular expressions (regex) in Python for advanced text data processing. You will apply regex to extract, manipulate, and analyze data from text files, combining it with efficient file handling techniques.
