@@ -175,7 +175,7 @@ def EmailExtractor():
             for email in match:
                 print(email)
 
-EmailExtractor()
+# EmailExtractor()
 
 # 3. Advanced Python Data Processing and Analysis Challenge
 # Objective:
@@ -231,6 +231,33 @@ EmailExtractor()
 # ```
 # Expected Outcome:
 # A summary report indicating the number of positive and negative words in the travel blogs, demonstrating the ability to process text data and apply basic sentiment analysis.
+
+travel_blog_entries = [
+ "Our recent trip to the mountains was amazing! The scenery was breathtaking and we enjoyed every moment of it.",
+ "The beach vacation was wonderful. We relaxed by the shore and soaked up the sun.",
+ "The city tour was a bit disappointing. The guide wasn't very knowledgeable, and the attractions were overcrowded.",
+ "Exploring the countryside was a unique experience. The landscapes were stunning, but the accommodations were poor.",
+ "Despite the rain, our visit to the waterfall was memorable. The cascading water was mesmerizing.",
+"We had high hopes for the safari adventure, but it turned out to be lackluster. The wildlife sightings were scarce.",
+"The food on our trip was excellent. We sampled delicious local cuisine at every stop.",
+"The historical tour was enlightening. We learned so much about the culture and heritage of the region.",
+"Overall, our travel experience was fantastic. We made unforgettable memories and can't wait for our next adventure!"
+]
+
+def sentimentAnalysis(blog_entries):
+    fileName = input("Enter File Name: (include extension) ").lower().strip()
+    if not os.path.isfile(fileName):
+        with open(f"{fileName}", "a") as file:
+            for entry in blog_entries:
+                file.write(f"{entry}\n")
+    else:
+        with open(f"{fileName}", "w") as file:
+            for entry in blog_entries:
+                file.write(f"{entry}\n")
+
+
+sentimentAnalysis(travel_blog_entries)
+
 # Task 2: Historical Weather Data Compiler
 
 # Problem Statement:
@@ -243,3 +270,6 @@ EmailExtractor()
 # 2020-01-01,5°C 2020-01-15,6°C 2020-02-05,4°C 2020-02-20,7°C 2020-03-10,8°C 2020-03-25,9°C 2020-04-05,12°C 2020-04-20,14°C 2020-05-05,17°C 2020-05-20,19°C 2020-06-05,22°C 2020-06-20,25°C 2020-07-05,28°C 2020-07-20,30°C 2020-08-05,32°C 2020-08-20,31°C 2020-09-05,27°C 2020-09-20,24°C 2020-10-05,19°C 2020-10-20,16°C 2020-11-05,11°C 2020-11-20,9°C 2020-12-05,6°C 2020-12-20,4°C
 # Expected Outcome:
 # An aggregated view of average temperatures for each year and identification of the year with the highest average temperature, showcasing data aggregation and analysis skills.
+
+
+
