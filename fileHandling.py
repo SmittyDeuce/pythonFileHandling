@@ -245,16 +245,41 @@ travel_blog_entries = [
 ]
 
 def sentimentAnalysis(blog_entries):
+    postiveWords = ["amazing", "enjoy", "beautiful","excellent","fantastic"]
+    negativeWords = ["bad", "disappointing", "poor","lackluster"]
+    positive = {'positive': 0}
+    negative = {'negative': 0}
     fileName = input("Enter File Name: (include extension) ").lower().strip()
+    
+    #check if file exists
     if not os.path.isfile(fileName):
+
+        #if not open\create file and append the information
         with open(f"{fileName}", "a") as file:
             for entry in blog_entries:
                 file.write(f"{entry}\n")
     else:
+
+        # if exists, open file and overwrite contents
         with open(f"{fileName}", "w") as file:
             for entry in blog_entries:
                 file.write(f"{entry}\n")
 
+    #count occurences of postive words in blog
+
+    for entry in blog_entries:
+       for word in postiveWords:
+           if word in entry.lower():
+               positive["positive"] += 1
+
+    #count occurences of negative words in blog
+    for entry in blog_entries:
+        for word in negativeWords:
+            if word in entry.lower():
+                negative["negative"] += 1
+
+
+    print(f"Positive Words: {positive}\nNegative Words: {negative}")
 
 sentimentAnalysis(travel_blog_entries)
 
