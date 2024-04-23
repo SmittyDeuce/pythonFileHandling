@@ -88,7 +88,7 @@ def FileSizeReporter():
     else:
         print("Path does not exist")
 
-# FileSizeReporter()
+FileSizeReporter()
 
 
 # Task 3: File Extension Counter:
@@ -133,7 +133,7 @@ def FileExtensionCounter():
         print("Path does not exist")
 
     
-# FileExtensionCounter()
+FileExtensionCounter()
 
 
 
@@ -175,7 +175,7 @@ def EmailExtractor():
             for email in match:
                 print(email)
 
-# EmailExtractor()
+EmailExtractor()
 
 # 3. Advanced Python Data Processing and Analysis Challenge
 # Objective:
@@ -281,7 +281,7 @@ def sentimentAnalysis(blog_entries):
 
     print(f"Positive Words: {positive}\nNegative Words: {negative}")
 
-# sentimentAnalysis(travel_blog_entries)
+sentimentAnalysis(travel_blog_entries)
 
 # Task 2: Historical Weather Data Compiler
 
@@ -319,3 +319,40 @@ else:
     with open("weather_2021.txt", "w") as file:
         for weather in weather_2021List:
             file.write(f"{weather}\n")
+
+
+def weatherDataCompiler(data1, data2):
+    data1_Total = 0
+    data2_Total = 0
+    data1_Counter = 0
+    data2_Counter = 0
+
+    with open(data1) as file:
+        for data in file:
+            dataList = data.split(",")
+            temp = dataList[1]
+            temp = temp.strip()
+            data1NumData = r"[0-9]{1,2}"
+            match = re.findall(data1NumData, temp)
+            for stats in match:
+                data1_Counter += 1
+                data1_Total += int(stats)
+    
+    with open (data2) as file:
+        for data in file:
+            dataList = data.split(",")
+            temp = dataList[1]
+            temp = temp.strip()
+            data2NumData = r'[0-9]{1,2}'
+            match = re.findall(data2NumData, temp)
+            for stats in match:
+                data2_Counter += 1
+                data2_Total += int(stats)
+
+    data1_Avg = int(data1_Total / data1_Counter)
+    data2_Avg = int(data2_Total / data2_Counter)
+   
+    print(f"{data1} yearly avg was the highest\n{data1}: {data1_Avg}\n{data2}: {data2_Avg}")
+
+
+weatherDataCompiler("weather_2020.txt", "weather_2021.txt")
