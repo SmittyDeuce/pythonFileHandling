@@ -281,7 +281,7 @@ def sentimentAnalysis(blog_entries):
 
     print(f"Positive Words: {positive}\nNegative Words: {negative}")
 
-sentimentAnalysis(travel_blog_entries)
+# sentimentAnalysis(travel_blog_entries)
 
 # Task 2: Historical Weather Data Compiler
 
@@ -296,5 +296,26 @@ sentimentAnalysis(travel_blog_entries)
 # Expected Outcome:
 # An aggregated view of average temperatures for each year and identification of the year with the highest average temperature, showcasing data aggregation and analysis skills.
 
+weather_2020 = "2020-01-01,5°C 2020-01-15,6°C 2020-02-05,4°C 2020-02-20,7°C 2020-03-10,8°C 2020-03-25,9°C 2020-04-05,12°C 2020-04-20,14°C 2020-05-05,17°C 2020-05-20,19°C 2020-06-05,22°C 2020-06-20,25°C 2020-07-05,28°C 2020-07-20,30°C 2020-08-05,32°C 2020-08-20,31°C 2020-09-05,27°C 2020-09-20,24°C 2020-10-05,19°C 2020-10-20,16°C 2020-11-05,11°C 2020-11-20,9°C 2020-12-05,6°C 2020-12-20,4°C"
+weather_2020List = weather_2020.split(" ")
 
+if not os.path.isfile("weather_2020.txt"):
+    with open("weather_2020.txt", "a") as file:
+        for weather in weather_2020List:
+            file.write(f"{weather}\n")
+else:
+    with open("weather_2020.txt", "w") as file:
+        for weather in weather_2020List:
+            file.write(f"{weather}\n")
 
+weather_2021 = "2021-01-01,4°C 2021-01-15,5°C 2021-02-05,3°C 2021-02-20,6°C 2021-03-10,7°C 2021-03-25,8°C 2021-04-05,11°C 2021-04-20,13°C 2021-05-05,16°C 2021-05-20,18°C 2021-06-05,21°C 2021-06-20,24°C 2021-07-05,27°C 2021-07-20,29°C 2021-08-05,31°C 2021-08-20,30°C 2021-09-05,26°C 2021-09-20,23°C 2021-10-05,18°C 2021-10-20,15°C 2021-11-05,10°C 2021-11-20,8°C 2021-12-05,5°C 2021-12-20,3°C"
+weather_2021List = weather_2021.split(" ")
+
+if not os.path.isfile("weather_2021.txt"):
+    with open("weather_2021.txt", "a") as file:
+        for weather in weather_2021List:
+            file.write(f"{weather}\n")
+else:
+    with open("weather_2021.txt", "w") as file:
+        for weather in weather_2021List:
+            file.write(f"{weather}\n")
